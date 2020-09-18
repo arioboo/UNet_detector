@@ -9,7 +9,6 @@ Training has been done in Lee at al. 2019 for filters F435W and F606W of ACS ins
 There has been observations of clumps in real data from other papers from Huertas-Company et al.
 This project makes 2D catalogues of clumps with SExtractor software. Catalogues are in .csv format and are exportable to other formats (json,etc.)
 A good tool to visualize catalogues is TOPCAT.
-#------------------------------------------------------------------------------------------------------------
 
     #-<VELA data folders>-#
 2 basic sets:
@@ -18,8 +17,6 @@ A good tool to visualize catalogues is TOPCAT.
  
 Although scripts work with the general dataset, we recommend the  "2filters" dataset. Please email to "alvaroinator7@gmail.com" to 
 ask for one of the above datasets.
-
-#--------------------------------------------------------------------------------------------------------------
 
     #-<INITIAL INSTRUCTIONS>-#
 The initial steps are pretty standard ones:
@@ -35,8 +32,6 @@ PYTHON PATH INCLUSSION: (set in .bashrc in analogous way)
 export PYTHONPATH=$PYTHONPATH:$clumpsvela_pdir ;
 ```
 
-#--------------------------------------------------------------------------------------------------------------
-
     #-<GENERAL USAGE>-#
 To use the scripts:
 
@@ -46,14 +41,3 @@ To use the scripts:
   Use "sex_catalog_create.py". This will link original maps from DATA/ and predicted maps from DATA_outputs/ in this folder. Then, it
   will run SExtractor and create a pandas.Dataframe to store catalogs in. Finally, catalogues are exported to .csv format to catalogues/
   
-#---------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
