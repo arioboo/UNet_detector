@@ -1,0 +1,9 @@
+###---unet_me predict parameters---###
+
+batch_size = 4                  # 4
+epochs     = 100                # 100
+verbose    = 1                  # 1 (TRUE)
+img_size   = 128                # 128
+max_n      = 48000              # size of training set (remainder to be used for test set) #48000
+ntrain     = int(max_n*9/10)    # training / validation split  #max_n*9/10
+nval       = int(max_n/10)      # max_n/10

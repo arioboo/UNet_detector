@@ -1,0 +1,75 @@
+###---<Correo Omri 3D classification>---###
+(<Marc>)
+Alvaro,
+
+Aquí tienes una explicación de como hacer la conversión del catálogo de Omry a pixels en las imágenes.
+
+Los catálogos hay que leerlos con numpy para que tengan sentido.
+
+Marc
+
+
+> Begin forwarded message:
+>
+> From: Omry Ginzburg <omry.ginzburg@mail.huji.ac.il>
+> Subject: Re: Second classification attempt
+> Date: April 30, 2019 at 4:51:32 PM GMT+1
+> To: Marc Huertas-Company <marc.huertas.company@gmail.com>
+>
+> No problem.
+> Each trio of columns in the catalog is the x,y,z coordinates of the clump w.r.t to the center, and in the coordinate system rotated such that z axis is the camera direction.
+> The sunrise images also provide the camera up direction, namely the y axis. The x-axis is computed as the cross product between y and z.
+> Basically, you can ignore the z value. The x,y values tell you where the clump is in the sunrise image, in physical units. I convert them to pixels using the formula I gave you.
+>
+> If I still didn't make myself clear, we can do a skype call tomorrow to clarify myself more easily.
+>
+> Omri
+>
+> On Tue, Apr 30, 2019 at 6:42 PM Marc Huertas-Company <marc.huertas.company@gmail.com> wrote:
+>
+>     Okay,  thanks. 
+>
+>     But I still don't understand😉
+>
+>     From your catalog that contains X, Y, Z in the simulation,  how do I get x, y in pixels? 
+>
+>     Sorry to bother you again,  but I am not familiar with the coordinates in the simulation. 
+>
+>     Thanks. 
+>
+>     Marc
+>
+>     On Tue, Apr 30, 2019, 12:03 PM Omry Ginzburg <omry.ginzburg@mail.huji.ac.il> wrote:
+>
+>         No worries.
+>         To convert between physical KPC to pixel numbers, I take the floor of the following expression
+>
+>         (i,j) = floor( ((2x/p) - 1, (2y/p) -1) / 2 )
+>         where p is the pixel size PIXKPC.
+>         Hope this is clearer. If not, let me know
+>
+>         Omri
+>
+>         On Tue, Apr 30, 2019 at 1:40 PM Marc Huertas-Company <marc.huertas@obspm.fr> wrote:
+>
+>             Hi,
+>
+>             Sorry. I don’t understand :(
+>
+>             In the catalogs you provide there are 3 coordinates X,Y,Z. How do you relate this to the “pixel number” in your equation?
+>
+>             Thank you.
+>
+>             Marc
+>
+>
+>>             On Apr 30, 2019, at 11:36 AM, Omry Ginzburg <omry.ginzburg@mail.huji.ac.il> wrote:
+>>
+>>             Hi, 
+>>             The way I convert coordinates to pixels to generate my training set is (x,y) = (p/2) (2i+1,2j+1), where p is the pixel size (PIXKPC in the header), (i,j) are the pixel numbers.
+>>
+>>             Notice that what I provided you are the physical positions from the simulation, w.r.t. SUNRISE centers. 
+>>
+>>             Let me know if you need anything else. 
+>>
+>>             Omri

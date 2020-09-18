@@ -1,0 +1,20 @@
+
+
+#Originally, the files of the weight "unet....best.hd5" and "unet.py" were in this parent_dir, but were moved to "python_work/"
+
+##--<WORK>--## 
+#--python_work/(original_files)--#
+	unet.py : Trained UNET model 
+	unet_48000_10_31_18_CT_48000_09_18_18_best.hd5 : Weights of the trained UNET model 
+
+#--python_work/(my_files)--#
+	sys_params.py : Load system parameters as user, parent directory, python directory ,data directory ,backups, extensions and so on... 
+	data_notation.py : Charge differents flow strings to work much easier with the data. All data in those 5 folders are in the same notation and follows the same patterns. #- noise.py : Change zeropoint of images (depend on filter) and add a randomized noise from flat "noise_stamps/" images.
+
+##--<DATA>--## 
+	VELA02/ , VELA04/, VELA05/, VELA06/ (directories) Data images in '.fits' standard format
+
+
+##--<OTHERS>--## 
+#--.compressed_data/--# Compressed original data. It is saved here to compare with our data between updates
+

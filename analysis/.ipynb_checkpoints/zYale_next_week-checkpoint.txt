@@ -1,0 +1,156 @@
+###---<Correo Nir Mandelker>---###
+
+This is the relevant readme for the files you're using.
+Let me know if you have any further questions.
+Best,
+Nir
+
+First, a few general notes:
+
+    Below, I will use "cold" mass to refer to the mass of cold gas (T<1.5x10^4 K) and young stars (age < 100 Myr).
+    Many of the properties below refer to the disc cylinder. Very briefly, the disc orientation, radius and height (half-thickness) are computed iteratively and self consistently. The radius contains 85% of the mass of cold gas and young stars within a cylinder of radius 0.15*Rvir, thickness 2kpc (+/-1kpc from the midplane) and alligned with the disc angular momentum. The thickness contains 85% of the mass of cold gas and young stars within a cylinder of radius Rd, thickness 2Rd (+/-Rd from the midplane) and aligned with the disc angular momentum. 
+    The orientation is set by the angular momentum of all the cold mass in the disc cylinder.
+    If you want more details, please ask me. You can also look at Appendix B of my 2014 paper, or my 2015 clumps paper.
+    When I refer to the "cold" disc mass (or the disc gas mass) I mean all the cold material (or all the gas) located within the disc cylinder (see below).
+    However, when I refer to the disc "stellar" mass, I apply an additional kinematic criterion for the "old" stars, assigning them to the disc only if their angular momentum parallel to the disc angular momentum is at least 70% of the maximal angular momentum they can have given their galactocentric distance and velocity.
+    In other words, "disc stars" are those stars with jz/(m*r*v) > 0.7
+    The same kinematic criterion was applied to the dark matter when computing the "disc dark matter mass", which appears in one of the catalogs.
+    Whenever mass is computed in a sphere, no kinematic criterion is applied.
+    SFR is computed in a somewhat complicated way, averaging over many different age windows in order to smooth out the discreteness in the formation times of stellar particles.
+    Basically, you can think of the quoted SFR values as representative of star formation on 60Myr timescales
+    If you want more details, please ask me.
+
+In ./VELA**/galaxy_catalogue/ there are 7 files.
+Several of these may be redundant and there is information appearing in several files. I will describe them one by one, in order of "importance" or "relevance".
+If you want me to combine some of these different files, get rid of some them or even add some missing properties, this can be easily done. Just ask me!
+
+Nir_simplified_disc_cat.txt
+These are the files that contain the center of the main galaxy, which you will need for analysing the simulations with YT.
+The first line has the number if snapshots analyzed.
+Then there is one line per snapshot, where the columns are as follows:
+
+    column 1: expansion factor
+    column 2: ID number of the stellar particle closest to the galaxy center (NOT at the actual center)
+    columns 3-5: (x, y, z) of the stellar particle with respect to the galaxy center, in kpc. To center on the galaxy, move your center so that the particle with the above ID is located at this position. The orientation of the box (the x, y and z directions themselves) is the same as in the raw data.
+    columns 6-8: (vx, vy, vz) of the stellar particle with respect to the galaxy center, in km/s. To move to the galaxies rest frame, shift all your velocities so that the particle with the above ID has this velocity vector.
+    columns 9-11: (Lx, Ly, Lz) Unit vector telling you the direction of the disc angular momentum. This determines what I call "face on". 
+    column 12: Disc radius, in kpc. 
+    column 13: Disc height (half the thickness), in kpc. 
+
+Nir_disc_cat.txt
+Contains physical properties of the disc cylinder. Ask me for further details on how exactly this cylinder is determined.
+The first line has the number if snapshots analyzed.
+Then there is one line per snapshot, where the columns are as follows:
+
+    column 1: expansion factor
+    columns 2-4: (xcm, ycm, zcm) Center of mass of the cold component within the disc cylinder, in kpc. This will tell you how much the gas (and young stars) are off-set from the total stars, which determine the galaxy center.
+    columns 5-7: (vxcm, vycm, vzcm) Center of mass velocity of the cold component within the disc cylinder, in km/s. This will tell you how much the gas (and young stars) are off-set from the total stars, which determine the galaxy rest frame.
+    columns 8-10: (Lx, Ly, Lz) Unit vector telling you the direction of the disc angular momentum. This determines what I call "face on". 
+    column 11: Magnitude of the disc specific angular momentum, whose unit vector is given above, in kpc*km/s. Recall this only refers to the cold component.
+    column 12: Disc radius, in kpc. 
+    column 13: Disc height (half the thickness), in kpc. 
+    column 14: Disc gas mass, in M_{sun}
+    column 15: Disc cold mass, in M_{sun}
+    column 16: Disc stellar mass, in M_{sun} (recall the kinematic criterion).
+    column 17: Mass of ex situ stars (formed outside the disc and accreted), in M_{sun} (recall the kinematic criterion).
+    column 18: Disc dark matter mass, in M_{sun} (recall the kinematic criterion).
+    column 19: Disc SFR, in M_{sun} yr^{-1}
+    column 20: Mass weighted mean stellar age of the disc, in Myr
+    column 21: Gas phase metallicity in the disc, in log(O/H)+12
+    column 22: Stellar phase metallicity in the disc, in log(O/H)+12
+
+Nir_spherical_galaxy_cat.txt
+Contains physical properties within a sphere having the same radius as the disc, rather than a cylinder. In the sphere, no kinematic criterion was applied to stellar or dark matter particles.
+The first line has the number if snapshots analyzed.
+Then there is one line per snapshot, where the columns are as follows:
+
+    column 1: expansion factor
+    columns 2-4: (xcm, ycm, zcm) Center of mass of the cold component within the disc cylinder, in kpc. This will tell you how much the gas (and young stars) are off-set from the total stars, which determine the galaxy center.
+    columns 5-7: (vxcm, vycm, vzcm) Center of mass velocity of the cold component within the disc cylinder, in km/s. This will tell you how much the gas (and young stars) are off-set from the total stars, which determine the galaxy rest frame.
+    column 8: Radius, in kpc. 
+    column 9: Gas mass, in M_{sun}
+    column 10: Cold mass, in M_{sun}
+    column 11: Stellar mass, in M_{sun}
+    column 12: Mass of ex situ stars (formed outside the galaxy sphere and accreted), in M_{sun}
+    column 13: Dark matter mass, in M_{sun}
+    column 14: SFR, in M_{sun} yr^{-1}
+    column 15: Mass weighted mean stellar age, in Myr
+    column 16: Gas phase metallicity, in log(O/H)+12
+    column 17: Stellar phase metallicity, in log(O/H)+12
+
+Nir_halo_cat.txt
+Contains the virial properties of the galactic halo.
+The first line has the number if snapshots analyzed.
+Then there is one line per snapshot, where the columns are as follows:
+
+    column 1: expansion factor
+    column 2: Virial radius, in kpc. 
+    column 3: Virial mass, in M_{sun} 
+    column 4: Virial velocity, in km/s. 
+
+Nir_1kpc_cat.txt
+Contains physical properties within the central 1kpc of the galaxy.
+No kinematic criteria is used for stars or dark matter.
+The number of snapshots is NOT listed here!
+There is one line per snapshot, where the columns are as follows:
+
+    column 1: expansion factor
+    column 2: Gas mass, in M_{sun}
+    column 3: Stellar mass, in M_{sun}, accounting for stellar mass loss (i.e. the current stellar mass)
+    column 4: Stellar mass, in M_{sun}, NOT accounting for stellar mass loss (i.e. the initial stellar mass)
+    column 5: Cold gas (T<1.5x10^4) mass, in M_{sun}
+    column 6: Young stars (age<100Myr) mass, in M_{sun}
+    column 7: Dark Matter mass, in M_{sun}
+    column 8: SFR, in M_{sun} yr^{-1}
+
+Nir_015_Rvir_cat.txt
+Contains physical properties within a sphere of radius 0.15*Rvir.
+This was relevant for me because it is the region within which I define my disc cylinder. It also gives some information about the inner halo.
+No kinematic criteria is used for stars or dark matter.
+The number of snapshots is NOT listed here!
+There is one line per snapshot, where the columns are as follows:
+
+    column 1: expansion factor
+    column 2: 0.15*Rvir, in kpc
+    column 3: Gas mass, in M_{sun}
+    column 4: Stellar mass, in M_{sun}, accounting for stellar mass loss (i.e. the current stellar mass)
+    column 5: Stellar mass, in M_{sun}, NOT accounting for stellar mass loss (i.e. the initial stellar mass)
+    column 6: Cold gas (T<1.5x10^4) mass, in M_{sun}
+    column 7: Young stars (age<100Myr) mass, in M_{sun}
+    column 8: Dark Matter mass, in M_{sun}
+    column 9: SFR, in M_{sun} yr^{-1}
+
+Mstar.txt
+Contains mass components in several different spheres.
+I used these files to look at M_star / M_halo in different regions.
+Most of this information appears already elsewhere.
+No kinematic criteria is used for stars or dark matter.
+The number of snapshots is NOT listed here!
+There is one line per snapshot, where the columns are as follows:
+
+    column 1: expansion factor
+    column 2: Rvir, in kpc
+    column 3: Rdisc, in kpc
+    column 4: Virial mass, in M_{sun} This is the Total mass within Rvir (gas+stars+dark matter)
+    column 5: Gas mass within Rvir, in M_{sun}
+    column 6: Stellar mass within Rvir, in M_{sun}, accounting for stellar mass loss (i.e. the current stellar mass)
+    column 7: Stellar mass within Rvir, in M_{sun}, NOT accounting for stellar mass loss (i.e. the initial stellar mass)
+    column 8: Dark matter mass within Rvir, in M_{sun}
+    column 9: Gas mass within 0.1*Rvir, in M_{sun}
+    column 10: Stellar mass within 0.1*Rvir, in M_{sun}, accounting for stellar mass loss.
+    column 11: Stellar mass within 0.1*Rvir, in M_{sun}, NOT accounting for stellar mass loss.
+    column 12: Dark matter mass within 0.1*Rvir, in M_{sun}
+    column 13: Gas mass within 10kpc, in M_{sun}
+    column 14: Stellar mass within 10kpc, in M_{sun}, accounting for stellar mass loss.
+    column 15: Stellar mass within 10kpc, in M_{sun}, NOT accounting for stellar mass loss.
+    column 16: Dark matter mass within 10kpc, in M_{sun}
+    column 17: Gas mass within Rdisc, in M_{sun}
+    column 18: Stellar mass within Rdisc, in M_{sun}, accounting for stellar mass loss.
+    column 19: Stellar mass within Rdisc, in M_{sun}, NOT accounting for stellar mass loss.
+    column 20: Dark matter mass within Rdisc, in M_{sun}
+
+
+That's it!!
+So, I guess that was A LOT of information.
+If you have any questions, comments, requests, or anything else, please feel free to contact me.
+

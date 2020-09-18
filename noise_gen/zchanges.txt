@@ -1,0 +1,16 @@
+###------------------<changes.txt>---------------------###
+
+
+
+Changes made to the original programs for the run of real HST-like noise addition program.
+
+#-<noise_addition_frontend.py>-#
+As the program was originally intended to be run in each VELA at a time for checking purposes, we didn't want to change that. But...
+
+28/03 - All set up parameters were moved to "params/data_params.py" in the section "<noise_gen> directory".
+
+
+#-<noise_addition_pipeline.py>-#
+
+28/03 - Changed the data HDU index inside fits from [1] to [0]. (PrimaryHDU)
+05/04 - "gs_presm4_all_acs_f*w_60mas_v3.0_drz.fits":  images of real noise in 2 filters: b("435") , v("606")

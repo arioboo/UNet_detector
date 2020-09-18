@@ -1,0 +1,7 @@
+#sewpy
+#glob
+pandas==0.20.0 
+numpy
+sys
+subprocess
+astropy
